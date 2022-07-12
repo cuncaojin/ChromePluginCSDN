@@ -1,0 +1,21 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  width: 200px;
+}
+
+#csdnDesc {
+  font-size: 16px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#author {
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  padding: 6px;
+  color: white;
+  background-color: #388E3C;
+}
