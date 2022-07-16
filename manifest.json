@@ -30,7 +30,8 @@
       "matches": ["*://*.csdn.net/*", "*://*/*"],
       "exclude_matches": ["*://*/*business*"],
       "all_frames": true,
-      "js": ["/js/content.js"]
+      "js": ["/js/content.js"],
+      "css": ["css/content.css", "css/toast.css"]
     }
   ]
 }

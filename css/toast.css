@@ -1,0 +1,83 @@
+.ccj_toast {
+  position: fixed;
+  z-index: 2147483647;
+  top: 50%;
+  left: 50%;
+  height: 40px;
+  display: block;
+  font-size: 16px;
+  border-radius: 7px;
+  line-height: 2.4;
+  margin: -20px 0 0 -75px;
+  padding: 2px 20px;
+  color: white;
+  background-color: #00a4f0;
+  animation: myAnimation 1s;
+  -moz-animation: myAnimation 1s;
+  -webkit-animation: myAnimation 1s;
+  -o-animation: myAnimation 1s;
+}
+
+@keyframes myAnimation {
+  0% {
+    top: 50%;
+    opacity: 1;
+  }
+  70% {
+    top: 40%;
+    opacity: 0.2;
+  }
+  100% {
+    top: 10%;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@-moz-keyframes myAnimation /* Firefox */ {
+  0% {
+    top: 50%;
+    opacity: 1;
+  }
+  70% {
+    top: 40%;
+    opacity: 0.2;
+  }
+  100% {
+    top: 10%;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@-webkit-keyframes myAnimation /* Safari and Chrome */ {
+  0% {
+    top: 50%;
+    opacity: 1;
+  }
+  70% {
+    top: 40%;
+    opacity: 0.2;
+  }
+  100% {
+    top: 10%;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@-o-keyframes myAnimation /* Opera */ {
+  0% {
+    top: 50%;
+    opacity: 1;
+  }
+  70% {
+    top: 40%;
+    opacity: 0.2;
+  }
+  100% {
+    top: 10%;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
