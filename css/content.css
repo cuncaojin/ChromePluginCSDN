@@ -6,12 +6,12 @@
   top: 0px;
   z-index: 1000;
   font-size: 16px;
-  color: white;
+  /* color: white; */
   /* font-weight: bold; */
-  background-color: #00a4f0;
+  /* background-color: #00a4f0; */
   padding: 4px 16px;
   margin: 4px;
   border-radius: 4px;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 5%), 0 2px 4px rgb(0 0 0 / 5%);
+  /* box-shadow: 0 2px 4px rgb(0 0 0 / 5%), 0 2px 4px rgb(0 0 0 / 5%); */
 }

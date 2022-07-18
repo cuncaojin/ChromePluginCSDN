@@ -33,5 +33,11 @@
       "js": ["/js/content.js"],
       "css": ["css/content.css", "css/toast.css"]
     }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["image/*"],
+      "matches": ["<all_urls>"]
+    }
   ]
 }

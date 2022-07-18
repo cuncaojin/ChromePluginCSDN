@@ -75,15 +75,11 @@ function toast(string, bgColor) {
 
 //////////////////////// CSDN ////////////////////////
 // 1. 未登录，解除代码无法复制问题
-var code1 = document.querySelectorAll("#content_views pre");
-if (code1 != null) {
-  code1.forEach(function (e) {
-    e.style.userSelect = "text";
-  });
-}
-var code2 = document.querySelectorAll("#content_views pre code");
-if (code2 != null) {
-  code2.forEach(function (e) {
+var code = document.querySelectorAll(
+  "#content_views pre, #content_views pre code"
+);
+if (code != null) {
+  code.forEach(function (e) {
     e.style.userSelect = "text";
   });
 }
@@ -107,10 +103,19 @@ if (hideArticleBox != null) {
 // 3. 增加CSDN自定义代码拷贝按钮
 var codes = document.querySelectorAll("pre code");
 if (codes) {
+  var imgURL = chrome.runtime.getURL("image/save.png");
+  console.log("imgURL: " + Object.prototype.toString.call(imgURL));
+
   codes.forEach(function (code) {
     var newElement = document.createElement("div");
-    newElement.innerText = "COPY";
+    // newElement.innerText = "COPY";
     newElement.setAttribute("class", "copyBtn");
+    newElement.setAttribute(
+      "style",
+      "background-image:url(" +
+        imgURL +
+        ");background-repeat: no-repeat;width:32px;height:32px"
+    );
     code.parentNode.insertBefore(newElement, code);
     newElement.addEventListener("click", function (event) {
       // var x = event.pageX;
@@ -147,3 +152,6 @@ removeElementsBySelector(removeElementSelectorContainer);
 // 5. 隐藏CSDN上hover登陆按钮
 addHiddenElementSelector(".hljs-button.signin");
 hideElementsBySelector(hiddenElementSelectorContainer);
+
+// var imgURL = chrome.runtime.getURL("image/home.png");
+// document.querySelector("article img").src = imgURL;
