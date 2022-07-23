@@ -1,17 +1,18 @@
 /* pre:hover .copyBtn, */
 .copyBtn {
-  display: block;
-  position: absolute;
-  right: 4px;
-  top: 0px;
-  z-index: 1000;
-  font-size: 16px;
-  /* color: white; */
-  /* font-weight: bold; */
-  /* background-color: #00a4f0; */
-  padding: 4px 16px;
-  margin: 4px;
+  z-index: 2147483647;
+  float:right;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 5%), 0 2px 4px rgb(0 0 0 / 5%);
   border-radius: 4px;
-  cursor: pointer;
-  /* box-shadow: 0 2px 4px rgb(0 0 0 / 5%), 0 2px 4px rgb(0 0 0 / 5%); */
+  /* top: 0px; */
+  /* right: 4px; */
+  /* position: absolute; */
+  /* padding: 4px 16px; */
+  /* margin: 4px; */
+  /* font-weight: bold; */
+  /* font-size: 16px; */
+  /* display: block; */
+  /* cursor: pointer; */
+  /* color: white; */
+  /* background-color: #00a4f0; */
 }

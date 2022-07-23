@@ -6,6 +6,23 @@
 
 console.log("cuncaojin: js/content.js");
 
+//////////////////////// 要点击的元素选择器 ////////////////////////
+var clickElementSelectorContainer = new String();
+function addClickElementSelector(selector) {
+  if (clickElementSelectorContainer != "") {
+    clickElementSelectorContainer = clickElementSelectorContainer.concat(",");
+  }
+  clickElementSelectorContainer =
+    clickElementSelectorContainer.concat(selector);
+}
+function clickElementsBySelector(clickElementSelectorContainer) {
+  var clickElements = document.querySelectorAll(clickElementSelectorContainer);
+  if (clickElements) {
+    clickElements.forEach(function (e) {
+      e.click();
+    });
+  }
+}
 //////////////////////// 要隐藏的元素选择器 ////////////////////////
 var hiddenElementSelectorContainer = new String();
 function addHiddenElementSelector(selector) {
@@ -117,10 +134,13 @@ if (codes) {
         ");background-repeat: no-repeat;width:32px;height:32px"
     );
     code.parentNode.insertBefore(newElement, code);
+
+    // var rect = newElement.getBoundingClientRect();
+    // newElement.style.top = rect.top;
+
     newElement.addEventListener("click", function (event) {
       // var x = event.pageX;
       // var y = event.pageY;
-      // var rect = newElement.getBoundingClientRect();
 
       // 拷贝网页显示元素内容
       // var txt = code.innerText;
@@ -151,7 +171,9 @@ removeElementsBySelector(removeElementSelectorContainer);
 
 // 5. 隐藏CSDN上hover登陆按钮
 addHiddenElementSelector(".hljs-button.signin");
+addHiddenElementSelector(".hljs-button");
 hideElementsBySelector(hiddenElementSelectorContainer);
 
-// var imgURL = chrome.runtime.getURL("image/home.png");
-// document.querySelector("article img").src = imgURL;
+// 6. 处理CSDN恶心的自作聪明代码展示不全、隐藏部分现象
+addClickElementSelector(".hide-preCode-bt");
+clickElementsBySelector(clickElementSelectorContainer);
