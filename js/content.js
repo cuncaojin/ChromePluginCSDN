@@ -177,3 +177,20 @@ hideElementsBySelector(hiddenElementSelectorContainer);
 // 6. 处理CSDN恶心的自作聪明代码展示不全、隐藏部分现象
 addClickElementSelector(".hide-preCode-bt");
 clickElementsBySelector(clickElementSelectorContainer);
+
+// 7. 屏蔽恶心的链接跳转确认按钮
+if (location.href.startsWith("https://link.csdn.net/?target")) {
+  // document.querySelector("a.loading-btn").click();
+  var url = document.querySelector("a.loading-btn").href;
+  window.close();
+  window.open(url);
+}
+
+//////////////////////// 知乎 //////////////////////////
+// 1. 屏蔽恶心的链接跳转确认按钮
+if (location.href.startsWith("https://link.juejin.cn/?target")) {
+  // document.querySelector("button.btn").click();
+  var url = document.querySelector("button.btn").href;
+  window.close();
+  window.open(url);
+}
