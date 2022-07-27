@@ -4,10 +4,11 @@
   "version": "1.0",
   "manifest_version": 3,
   "background": {
-    "service_worker": "/js/background.js"
+    "service_worker": "/js/background.js",
+    "type": "module"
   },
   "permissions": ["storage", "activeTab", "scripting"],
-  "host_permissions": ["*://*.csdn.net/*"],
+  "host_permissions": ["*://*.csdn.net/*", "*://*.zhihu.com/*"],
   "optional_host_permissions": ["*://*/*"],
   "action": {
     "default_popup": "/html/popup.html",
@@ -27,7 +28,7 @@
   "options_page": "/html/options.html",
   "content_scripts": [
     {
-      "matches": ["*://*.csdn.net/*", "*://*/*"],
+      "matches": ["*://*.csdn.net/*", "*://*.zhihu.com/*"],
       "exclude_matches": ["*://*/*business*"],
       "all_frames": true,
       "js": ["/js/content.js"],
