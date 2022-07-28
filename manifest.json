@@ -32,7 +32,8 @@
       "exclude_matches": ["*://*/*business*"],
       "all_frames": true,
       "js": ["/js/content.js"],
-      "css": ["css/content.css", "css/toast.css"]
+      "css": ["css/content.css", "css/toast.css"],
+      "run_at": "document_idle"
     }
   ],
   "web_accessible_resources": [

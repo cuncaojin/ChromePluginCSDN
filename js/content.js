@@ -1,3 +1,4 @@
+// https://developer.chrome.com/docs/extensions/mv3/content_scripts/
 // MDN: https://developer.mozilla.org/zh-CN/docs/Web/API/Clipboard/writeText
 // 类型判断
 // Object.prototype.toString.call(obj)
@@ -186,6 +187,7 @@ function doWork() {
 
   // 4. 移除CSDN上广告 (谷歌和万维广告 https://wwads.cn)
   addRemoveElementSelector(".box-shadow");
+  addRemoveElementSelector(".picture-ad");
   addRemoveElementSelector(".adsbygoogle");
   addRemoveElementSelector("#recommendAdBox .wwads-cn");
   addRemoveElementSelector("#recommendAdBox script");

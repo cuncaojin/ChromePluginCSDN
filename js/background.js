@@ -1,5 +1,14 @@
 console.log("cuncaojin: js/background.js");
 
+// async function getCurrentTab() {
+//   /* ... */
+// }
+// let tab = await getCurrentTab();
+// chrome.scripting.executeScript({
+//   target: { tabId: tab.id },
+//   files: ['jquery-min.js, content-script.js']
+// });
+
 chrome.action.onClicked.addListener((tab) => {
   console.log("cuncaojin: action.onClick");
   chrome.scripting.executeScript({
