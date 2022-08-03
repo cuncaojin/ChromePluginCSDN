@@ -9,6 +9,19 @@ console.log("cuncaojin: js/content.js");
 // window.addEventListener("DOMContentLoaded", (event) => {
 console.info("loaded");
 function doWork() {
+  //////////////////////// 向上搜索选择器 ////////////////////////
+  function getParentSelecter(rootElementTagName, sonElement) {
+    var e = sonElement;
+    console.log(e.parentElement.nodeName);
+    while (
+      e.parentElement.nodeName.toUpperCase() != rootElementTagName &&
+      e.parentElement.nodeName.toUpperCase() != "BODY"
+    ) {
+      e = e.parentElement;
+    }
+    return e.parentElement;
+  }
+
   //////////////////////// 要点击的元素选择器 ////////////////////////
   var clickElementSelectorContainer = new String();
   function addClickElementSelector(selector) {
@@ -139,7 +152,14 @@ function doWork() {
         // newElement.innerText = "COPY";
         newElement.setAttribute("class", "copyBtn");
         newElement.style.backgroundImage = "url(" + imgURL + ")";
-
+        if (location.hostname.match(".*.zhihu.com.*")) {
+          newElement.style.float = "right";
+          newElement.style.position = "inherit";
+        } else if (location.hostname.match(".*.csdn.net.*")) {
+          newElement.style.position = "absolute";
+          newElement.style.top = "2px";
+          newElement.style.right = "2px";
+        }
         // let preStyle = window.getComputedStyle(code.parentElement, null);
         // let prePaddingTop = parseFloat(preStyle.getPropertyValue("padding-top"));
         // let prePaddingRight = parseFloat(preStyle.getPropertyValue("padding-right"));
@@ -192,7 +212,13 @@ function doWork() {
   addRemoveElementSelector("#recommendAdBox .wwads-cn");
   addRemoveElementSelector("#recommendAdBox script");
   addRemoveElementSelector(".aside-box script");
+  // 屏蔽必应搜索结果广告
+  addRemoveElementSelector(".b_ad");
   removeElementsBySelector();
+  // document.querySelectorAll(".ad_fls").forEach(function (e) {
+  //   // addRemoveElementSelector(".ad_fls");
+  //   getParentSelecter("li", e).remove();
+  // });
 
   // 5. 隐藏CSDN上hover登陆按钮
   addHiddenElementSelector(".hljs-button.signin");
@@ -215,6 +241,13 @@ function doWork() {
 
   //////////////////////// 知乎 //////////////////////////
   // 1. 屏蔽恶心的链接跳转确认按钮
+  if (location.href.startsWith("https://link.zhihu.com/?target=")) {
+    var url = document.querySelector("a.button").href;
+    window.close();
+    window.open(url);
+  }
+
+  // 掘金
   if (location.href.startsWith("https://link.juejin.cn/?target")) {
     var url = document.querySelector("button.btn").href;
     window.close();
