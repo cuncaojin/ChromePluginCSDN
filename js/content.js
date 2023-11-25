@@ -228,8 +228,26 @@ function doWork() {
   // 6. 处理CSDN/知乎恶心的自作聪明代码展示不全、隐藏部分美化效果但不实用现象
   addClickElementSelector(".hide-preCode-bt");
   addClickElementSelector("button.ContentItem-expandButton");
+  // 知乎登录
+  addClickElementSelector(".Modal-closeButton");
   console.log(clickElementSelectorContainer);
   clickElementsBySelector();
+
+  // 网页内容发生变化时点击登录按钮
+  // 定义变动发生时的回调函数
+  function handleMutation(event) {
+    console.log("发生了变动：", event.type);
+    removeElementsBySelector();
+    hideElementsBySelector();
+    clickElementsBySelector();
+  }
+  // 选择要监听的目标节点
+  const targetNode = document.querySelector("body");
+  // 监听各种变动事件并指定回调函数
+  targetNode.addEventListener("DOMAttrModified", handleMutation);
+  targetNode.addEventListener("DOMNodeInserted", handleMutation);
+  // targetNode.addEventListener("DOMNodeRemoved", handleMutation);
+  // targetNode.addEventListener("DOMCharacterDataModified", handleMutation);
 
   // 7. 屏蔽恶心的链接跳转确认按钮
   if (location.href.startsWith("https://link.csdn.net/?target")) {
