@@ -187,6 +187,7 @@ function doWork() {
           // 拷贝网页显示元素内容
           // innerText 有换行效果，不含hidden内容
           var txt = code.innerText;
+          txt = txt.replace(/\u200B/g, "");
           // var txt = code.textContent;
           navigator.clipboard.writeText(txt).then(
             /* clipboard successfully set */
