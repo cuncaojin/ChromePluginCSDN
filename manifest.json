@@ -7,7 +7,7 @@
     "service_worker": "/js/background.js",
     "type": "module"
   },
-  "permissions": ["storage", "activeTab", "scripting"],
+  "permissions": ["storage", "activeTab", "scripting", "tabs"],
   "host_permissions": ["*://*.csdn.net/*", "*://*.zhihu.com/*"],
   "optional_host_permissions": ["*://*/*"],
   "action": {

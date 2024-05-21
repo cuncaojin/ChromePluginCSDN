@@ -246,10 +246,31 @@ function doWork() {
   const targetNode = document.querySelector("body");
   // 监听各种变动事件并指定回调函数
   targetNode.addEventListener("DOMAttrModified", handleMutation);
-  targetNode.addEventListener("DOMNodeInserted", handleMutation);
+  // targetNode.addEventListener("DOMNodeInserted", handleMutation);
+
+  // 创建一个 MutationObserver 实例
+  const observer = new MutationObserver((mutationsList, observer) => {
+    // // 在这里处理 DOM 变化的逻辑
+    // // mutationsList 是一个包含所有 DOM 变化的数组
+    // mutationsList.forEach(mutation => {
+    //   // 处理每个具体的 DOM 变化
+    // });
+    removeElementsBySelector();
+    hideElementsBySelector();
+    clickElementsBySelector();
+  });
+  // 需要观察的配置
+  const config = { childList: true, subtree: true };
+  // 监视目标节点的变化
+  observer.observe(targetNode, config);
+
   // targetNode.addEventListener("DOMNodeRemoved", handleMutation);
   // targetNode.addEventListener("DOMCharacterDataModified", handleMutation);
 
+  chrome.tabs.create({
+    url: "http://www.baidu.com"
+  });
+  
   // 7. 屏蔽恶心的链接跳转确认按钮
   if (location.href.startsWith("https://link.csdn.net/?target")) {
     // document.querySelector("a.loading-btn").click();

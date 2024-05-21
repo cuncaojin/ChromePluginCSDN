@@ -35,6 +35,19 @@ chrome.action.onClicked.addListener((tab) => {
 //   });
 // });
 
+var tabId = null;
+chrome.tabs.onCreated.addListener(function (tab) {
+  // 利用一个标志变量来区分第一次运行的情况，通常新标签页创建后首次运行的逻辑可以认为是直接创建的新标签页
+  if (tabId === null && ((tab.url === 'chrome://newtab/' || tab.url === 'about:blank' ||
+    tab.url === '' || tab.url.startsWith('chrome://new-tab-page-third-party') ||
+    tab.url.startsWith('https://www.bing.com/chrome/newtab')))) {
+    chrome.tabs.update(tab.id, { url: 'https://metaso.cn/' })
+    // chrome.tabs.update(tab.id, { url: 'https://www.baidu.com' });
+    // chrome.tabs.update(tab.id, { url: '/html/onboarding.html' });
+    tabId = tab.id;
+  }
+});
+
 // // This will run when a bookmark is created.
 // chrome.bookmarks.onCreated.addListener(() => {
 //   // do something
