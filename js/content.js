@@ -8,7 +8,26 @@ console.log("cuncaojin: js/content.js");
 
 // window.addEventListener("DOMContentLoaded", (event) => {
 console.info("loaded");
+
 function doWork() {
+  document.addEventListener('keydown', function (event) {
+    if (event.ctrlKey && event.key === 'c') {
+      // 阻止默认的 Ctrl + C 行为
+      event.preventDefault();
+      const selectedText = window.getSelection().toString();
+      if (selectedText) {
+        copyText(selectedText);
+      }
+    }
+  });
+
+  document.addEventListener('mouseup', (event) => {
+    const selectedText = window.getSelection().toString();
+    if (selectedText) {
+      copyText(selectedText, true);
+    }
+  });
+
   //////////////////////// 向上搜索选择器 ////////////////////////
   function getParentSelecter(rootElementTagName, sonElement) {
     var e = sonElement;
@@ -110,6 +129,27 @@ function doWork() {
     // }, 1000);
   }
 
+  let copyText = (text, silent = false) => {
+    text = text.replace(/\u200B/g, "");
+    // var text = code.textContent;
+    navigator.clipboard.writeText(text).then(
+      /* clipboard successfully set */
+      function () {
+        console.log(text);
+        if (!silent) {
+          toast("复制成功", "#00a4f0");
+        }
+      },
+      /* clipboard write failed */
+      function () {
+        console.log(text);
+        if (!silent) {
+          toast("复制失败", "red");
+        }
+      }
+    );
+  }
+
   //////////////////////// CSDN ////////////////////////
   // 1. 未登录，解除代码无法复制问题
   var code = document.querySelectorAll(
@@ -187,20 +227,7 @@ function doWork() {
           // 拷贝网页显示元素内容
           // innerText 有换行效果，不含hidden内容
           var txt = code.innerText;
-          txt = txt.replace(/\u200B/g, "");
-          // var txt = code.textContent;
-          navigator.clipboard.writeText(txt).then(
-            /* clipboard successfully set */
-            function () {
-              console.log(txt);
-              toast("复制成功", "#00a4f0");
-            },
-            /* clipboard write failed */
-            function () {
-              console.log(txt);
-              toast("复制失败", "red");
-            }
-          );
+          copyText(txt)
         });
       }
     });
@@ -267,10 +294,6 @@ function doWork() {
   // targetNode.addEventListener("DOMNodeRemoved", handleMutation);
   // targetNode.addEventListener("DOMCharacterDataModified", handleMutation);
 
-  chrome.tabs.create({
-    url: "http://www.baidu.com"
-  });
-  
   // 7. 屏蔽恶心的链接跳转确认按钮
   if (location.href.startsWith("https://link.csdn.net/?target")) {
     // document.querySelector("a.loading-btn").click();
@@ -301,6 +324,7 @@ doWork();
 window.addEventListener("load", (event) => {
   doWork();
 });
+
 
 switch (document.readyState) {
   case "loading":
