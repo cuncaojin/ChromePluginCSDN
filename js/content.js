@@ -21,12 +21,13 @@ function doWork() {
     }
   });
 
-  document.addEventListener('mouseup', (event) => {
-    const selectedText = window.getSelection().toString();
-    if (selectedText) {
-      copyText(selectedText, true);
-    }
-  });
+  // 复制内容后，选择内容粘贴会失效，因此注释掉该功能，后期可以增加UI开关控制时再打开
+  // document.addEventListener('mouseup', (event) => {
+  //   const selectedText = window.getSelection().toString();
+  //   if (selectedText) {
+  //     copyText(selectedText, true);
+  //   }
+  // });
 
   //////////////////////// 向上搜索选择器 ////////////////////////
   function getParentSelecter(rootElementTagName, sonElement) {
